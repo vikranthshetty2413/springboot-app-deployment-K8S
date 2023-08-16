@@ -24,7 +24,7 @@ pipeline {
             steps {
                 sh "mvn test jacoco:report sonar:sonar \
             -Dsonar.projectKey=tgp-svc-sonar \
-            -Dsonar.host.url=http://sonar.bpcl.goodplatform.co:9000 \
+            -Dsonar.host.url=http://18.136.72.199:9000/maintenance?return_to=%2F \
             -Dsonar.login=${SONAR_LOGIN}"
             }
         }
