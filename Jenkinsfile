@@ -49,3 +49,4 @@ pipeline {
                 sh "docker push 378339051275.dkr.ecr.ap-south-1.amazonaws.com/tgp-svc-dashboard:${app}-${BUILD_NUMBER}"
             }
         }
+    }
