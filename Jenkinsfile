@@ -44,9 +44,9 @@ pipeline {
         }
         stage('Push to ECR') {
             steps {
-                sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 378339051275.dkr.ecr.ap-south-1.amazonaws.com'
-                sh "docker tag tgp-svc-dashboard-${app}:latest 378339051275.dkr.ecr.ap-south-1.amazonaws.com/tgp-svc-dashboard:${app}-${BUILD_NUMBER}"
-                sh "docker push 378339051275.dkr.ecr.ap-south-1.amazonaws.com/tgp-svc-dashboard:${app}-${BUILD_NUMBER}"
+                sh 'aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com'
+                sh "docker tag frontendapp-${app}:latest  490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/eks-frontend-app-deployment:${app}-${BUILD_NUMBER}"
+                sh "docker push 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/eks-frontend-app-deployment:${app}-${BUILD_NUMBER}"
             }
         }
     }
