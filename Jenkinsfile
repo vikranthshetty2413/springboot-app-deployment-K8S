@@ -4,9 +4,9 @@ pipeline {
         AWS_ACCOUNT_ID = '490167669940'
         app = 'tgp-svc-dashboard'
         IMAGE_TAG = "tgp-svc-dashboard-${BUILD_NUMBER}"
-        AWS_ACCESS_KEY_ID = credentials('AWS-Creds')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS-Creds')
-        AWS_DEFAULT_REGION = 'ap-south-1'
+        AWS_ACCESS_KEY_ID = credentials('harish credentials')
+        AWS_SECRET_ACCESS_KEY = credentials('harish credentials')
+        AWS_DEFAULT_REGION = 'ap-southeast-1'
         SONAR_LOGIN = credentials('Sonar-Creds')
     }
     stages {
