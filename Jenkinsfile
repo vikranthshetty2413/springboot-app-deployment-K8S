@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         AWS_ACCOUNT_ID = '490167669940'
-        app = 'tgp-svc-dashboard'
-        IMAGE_TAG = "tgp-svc-dashboard-${BUILD_NUMBER}"
+        app = 'frontend'
+        IMAGE_TAG = "frontend-${BUILD_NUMBER}"
         AWS_ACCESS_KEY_ID = credentials('harish credentials')
         AWS_SECRET_ACCESS_KEY = credentials('harish credentials')
         AWS_DEFAULT_REGION = 'ap-southeast-1'
@@ -23,9 +23,9 @@ pipeline {
         stage('Compile and Run Sonar Analysis') {
             steps {
                 sh "mvn test jacoco:report sonar:sonar \
-            -Dsonar.projectKey=tgp-svc-sonar \
-            -Dsonar.host.url=http://18.136.72.199:9000/maintenance?return_to=%2F \
-            -Dsonar.login=${SONAR_LOGIN}"
+            -Dsonar.projectKey=frontend \
+            -Dsonar.host.url=http://18.136.72.199:9000/ \
+            -Dsonar.login=sqa_50885d4939be4dfc296b4d5af73a7c307287fec8"
             }
         }
         stage('Push to S3') {
@@ -34,12 +34,12 @@ pipeline {
                 sh 'aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY'
                 sh 'aws configure set default.region $AWS_DEFAULT_REGION'
                 sh 'aws s3 ls'
-                sh 'aws s3 cp target/*.jar s3://backend-main-bucket/tgp-svc-dashboard/'
+                sh 'aws s3 cp target/*.jar s3://eksfrontendapp/'
             }
         }
         stage('Build Image') {
             steps {
-                sh 'docker build -t tgp-svc-dashboard-${app} .'
+                sh 'docker build -t frontendapp-${app} .'
             }
         }
         stage('Push to ECR') {
