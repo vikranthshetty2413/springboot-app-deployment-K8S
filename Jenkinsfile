@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: "origin/${env.BRANCH_NAME}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GITHUB-CONNECTION', url: 'https://git.goodplatform.in/bpsl-nagarro/tgp-svc-dashboard.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: "origin/${env.BRANCH_NAME}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GITHUB-CONNECTION', url: 'https://github.com/babu517/springboot-app-deployment-K8S/tree/main']]])
             }
         }
         stage('Code Build') {
