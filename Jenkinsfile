@@ -4,8 +4,8 @@ pipeline {
         AWS_ACCOUNT_ID = '490167669940'
         app = 'frontend'
         IMAGE_TAG = "frontend-${BUILD_NUMBER}"
-        AWS_ACCESS_KEY_ID = credentials('harish credentials')
-        AWS_SECRET_ACCESS_KEY = credentials('harish credentials')
+        AWS_ACCESS_KEY_ID = credentials('AWS-CRED')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS-CRED')
         AWS_DEFAULT_REGION = 'ap-southeast-1'
         SONAR_LOGIN = credentials('Sonar-Creds')
     }
