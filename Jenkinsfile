@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCOUNT_ID = '378339051275'
+        AWS_ACCOUNT_ID = '490167669940'
         app = 'tgp-svc-dashboard'
         IMAGE_TAG = "tgp-svc-dashboard-${BUILD_NUMBER}"
         AWS_ACCESS_KEY_ID = credentials('AWS-Creds')
