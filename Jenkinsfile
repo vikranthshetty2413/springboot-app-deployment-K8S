@@ -7,7 +7,7 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('AWS-Creds')
         AWS_SECRET_ACCESS_KEY = credentials('AWS-Creds')
         AWS_DEFAULT_REGION = 'ap-south-1'
-        SONAR_LOGIN = credentials('tokensonar')
+        SONAR_LOGIN = credentials('Sonar-Creds')
     }
     stages {
         stage('Checkout') {
