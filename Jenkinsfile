@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Push to S3') {
             steps {
-                withAWS(roleAccount:'490167669940', role :'EC2-SSM-role') {
+                withAWS(roleAccount:'490167669940', role :'EC2-SSM-role', roleSessionName: 'jenkins-session') {
                     sh 'aws s3 ls'
                     sh 'aws s3 ls'
                     sh 'aws s3 cp target/*.jar s3://eksfrontendapp/'
