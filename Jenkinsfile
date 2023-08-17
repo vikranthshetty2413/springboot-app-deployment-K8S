@@ -54,7 +54,7 @@ pipeline {
                 script {
                     sh '''
                         aws eks update-kubeconfig --name sandboxeks1
-                        kubectl get ns
+                        kubectl apply -f https://github.com/babu517/springboot-app-deployment-K8S/blob/main/eks-deploy-k8s.yaml
                     '''
                 }
             }
