@@ -7,7 +7,6 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS-CRED')
         AWS_DEFAULT_REGION = 'ap-southeast-1'
         EKS_CLUSTER_NAME = 'sandboxeks1'
-        GITHUB_YAML_URL = 'https://github.com/babu517/springboot-app-deployment-K8S/blob/main/eks-deploy-k8s.yaml'
         SONAR_LOGIN = credentials('Sonar-Creds')
     }
     stages {
@@ -57,7 +56,7 @@ pipeline {
                     sh '''
                         aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
                         curl -o deployment.yaml $GITHUB_YAML_URL
-                        kubectl apply -f deployment.yaml --validate=false
+                        kubectl apply -f eks-deploy-k8s.yaml 
                     '''
                 }
             }
