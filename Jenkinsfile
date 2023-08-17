@@ -51,7 +51,12 @@ pipeline {
         }
         stage('Deploying ECR Image to EKS') {
             steps {
-                kubectl get ns 
+                script {
+                    sh '''
+                        aws eks update-kubeconfig --name sandboxeks1
+                        kubectl get ns
+                    '''
+                }
             }
         }
         
