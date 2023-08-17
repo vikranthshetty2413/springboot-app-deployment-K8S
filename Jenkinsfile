@@ -3,8 +3,8 @@ pipeline {
     environment {
         app = 'frontend'
         IMAGE_TAG = "frontend-${BUILD_NUMBER}"
-        AWS_ACCESS_KEY_ID = credentials('AWS-Creds')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS-Creds')
+        AWS_ACCESS_KEY_ID = credentials('AWS-CRED')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS-CRED')
         AWS_DEFAULT_REGION = 'AWS-Region'
         SONAR_LOGIN = credentials('Sonar-Creds')
     }
