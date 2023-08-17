@@ -36,7 +36,6 @@ pipeline {
                 sh 'aws s3 cp target/*.jar s3://eksfrontendapp/'
                 }
             }
-        }
                
         stage('Build Image') {
             steps {
