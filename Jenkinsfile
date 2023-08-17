@@ -3,6 +3,9 @@ pipeline {
     environment {
         app = 'frontend'
         IMAGE_TAG = "frontend-${BUILD_NUMBER}"
+        AWS_ACCESS_KEY_ID = credentials('AWS-Creds')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS-Creds')
+        AWS_DEFAULT_REGION = 'AWS-Region'
         SONAR_LOGIN = credentials('Sonar-Creds')
     }
     stages {
@@ -26,10 +29,11 @@ pipeline {
         }
         stage('Push to S3') {
             steps {
-                withAWS(roleAccount:'490167669940', role :'EC2-SSM-role', roleSessionName: 'jenkins-session') {
-                    sh 'aws s3 ls'
-                    sh 'aws s3 ls'
-                    sh 'aws s3 cp target/*.jar s3://eksfrontendapp/'
+                sh 'aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID'
+                sh 'aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY'
+                sh 'aws configure set default.region $AWS_DEFAULT_REGION'
+                sh 'aws s3 ls'
+                sh 'aws s3 cp target/*.jar s3://eksfrontendapp/'
                 }
             }
         }
