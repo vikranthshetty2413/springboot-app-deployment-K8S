@@ -5,7 +5,7 @@ pipeline {
         IMAGE_TAG = "frontend-${BUILD_NUMBER}"
         AWS_ACCESS_KEY_ID = credentials('AWS-CRED')
         AWS_SECRET_ACCESS_KEY = credentials('AWS-CRED')
-        AWS_DEFAULT_REGION = 'AWS-Region'
+        AWS_DEFAULT_REGION = 'ap-southeast-1'
         SONAR_LOGIN = credentials('Sonar-Creds')
     }
     stages {
