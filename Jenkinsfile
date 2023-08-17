@@ -57,7 +57,7 @@ pipeline {
                     sh '''
                         aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
                         curl -o deployment.yaml $GITHUB_YAML_URL
-                        kubectl apply -f deployment.yaml
+                        kubectl apply -f deployment.yaml --validate=false
                     '''
                 }
             }
