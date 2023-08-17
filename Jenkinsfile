@@ -1,12 +1,8 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCOUNT_ID = '490167669940'
         app = 'frontend'
         IMAGE_TAG = "frontend-${BUILD_NUMBER}"
-        AWS_ACCESS_KEY_ID = credentials('AWS-CRED')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS-CRED')
-        AWS_DEFAULT_REGION = 'ap-southeast-1'
         SONAR_LOGIN = credentials('Sonar-Creds')
     }
     stages {
@@ -30,13 +26,14 @@ pipeline {
         }
         stage('Push to S3') {
             steps {
-                sh 'aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID'
-                sh 'aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY'
-                sh 'aws configure set default.region $AWS_DEFAULT_REGION'
-                sh 'aws s3 ls'
-                sh 'aws s3 cp target/*.jar s3://eksfrontendapp/'
+                withAWS(roleAccount:'490167669940', role :'EC2-SSM-role') {
+                    sh 'aws s3 ls'
+                    sh 'aws s3 ls'
+                    sh 'aws s3 cp target/*.jar s3://eksfrontendapp/'
+                }
             }
         }
+               
         stage('Build Image') {
             steps {
                 sh 'docker build -t frontendapp-${app} .'
