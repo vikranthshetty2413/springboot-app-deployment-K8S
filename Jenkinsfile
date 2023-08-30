@@ -38,6 +38,18 @@ pipeline {
                 }
             }
                
+        stage('Snyk Test') {
+            steps {
+                echo 'Snyk Testing...'
+                snykSecurity (
+                    projectName: 'babu517', 
+                    snykInstallation: 'snyk@latest', 
+                    snykTokenId: 'Snyk',
+                    failOnIssues: false
+                )
+            }
+        }
+
         stage('Build Image') {
             steps {
                 sh 'docker build -t frontendapp-${app} .'
