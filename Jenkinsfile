@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        app = 'frontend'
+        app = 'frontend app'
         IMAGE_TAG = "frontend-${BUILD_NUMBER}"
         AWS_ACCESS_KEY_ID = credentials('AWS-CRED')
         AWS_SECRET_ACCESS_KEY = credentials('AWS-CRED')
