@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: "origin/${env.BRANCH_NAME}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/babu517/springboot-app-deployment-K8S']]])
+                checkout([$class: 'GitSCM', branches: [[name: "origin/${env.BRANCH_NAME}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/vikranthshetty2413/springboot-app-deployment-K8S.git']]])
             }
         }
         stage('Code Build') {
@@ -24,9 +24,9 @@ pipeline {
         }
         stage('Compile and Run Sonar Analysis') {
             steps {
-                sh "mvn clean verify sonar:sonar  \
+                sh "mvn clean verify admin:admin  \
             -Dsonar.projectKey=frontend \
-            -Dsonar.host.url=http:182.18.184.80:9000 \
+            -Dsonar.host.url=http:54.179.193.150:9000 \
             -Dsonar.login=sqa_50885d4939be4dfc296b4d5af73a7c307287fec8"
             }
         }
