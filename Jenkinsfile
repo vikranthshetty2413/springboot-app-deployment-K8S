@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: "origin/${env.BRANCH_NAME}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/vikranthshetty2413/springboot-app-deployment-K8S.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: "origin/main"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/vikranthshetty2413/springboot-app-deployment-K8S.git']]])
             }
         }
         /*stage('Code Build') {
