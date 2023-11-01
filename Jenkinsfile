@@ -17,12 +17,12 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: "origin/main"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/vikranthshetty2413/springboot-app-deployment-K8S.git']]])
             }
         }
-        /*stage('Code Build') {
+        stage('Code Build') {
             steps {
                 sh 'mvn clean install'
             }
         }
-        stage('Compile and Run Sonar Analysis') {
+       /* stage('Compile and Run Sonar Analysis') {
             steps {
                 sh "mvn clean verify admin:admin  \
             -Dsonar.projectKey=frontend \
