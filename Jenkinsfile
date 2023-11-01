@@ -17,7 +17,7 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: "origin/${env.BRANCH_NAME}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/vikranthshetty2413/springboot-app-deployment-K8S.git']]])
             }
         }
-        stage('Code Build') {
+        /*stage('Code Build') {
             steps {
                 sh 'mvn clean install'
             }
@@ -50,7 +50,7 @@ pipeline {
                     failOnIssues: false
                 )
             }
-        }
+        } */
 
         stage('Build Image') {
             steps {
