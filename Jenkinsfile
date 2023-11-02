@@ -54,7 +54,7 @@ pipeline {
 
         stage('Build Image') {
             steps {
-                sh 'docker build -t new .'
+                sh 'docker build -t frontendapp-${app} .'
             }
         }
         stage('Push to ECR') {
