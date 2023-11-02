@@ -34,6 +34,12 @@ pipeline {
             steps {
                 sh 'aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID'
                 sh 'aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY'
+                sh 'export AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEPb//////////wEaCXVzLWVhc3QtMSJGMEQCIBJb2hGThH35D55x6mMHSEd69/4QX//FPYYSjkFvKASSAiAx1Ew/GOPoyJW
+FBrSK19vIuX8unwUAhJKFkPiHAEbQpyqUAwgvEAMaDDQ5MDE2NzY2OTk0MCIMWk+A+EgBogdnrU/FKvECHdRjH3plUzKzi594ti6Lj2z1fIFhR6p5R72qEY7mHVAwbEeuf0K2yyER1swXNm84UdzpdRjPMMIMMrGivcSkot
+GZtDzfUSllBkvE05e/ncDTUY+1LHvK20OhhDB97EmN8gUuR8dqBKVlA74naABNgsCc8yjwYCBzW6Xk4EWPkRP9Q5/lqkTSRo56uN9oF74xhtUNlQUVNsJOl8834Qf2S43gN/vKzxcjQsSSQeKbJmMTrqKSoYe4Kno0JgRcE
+g+HGMmRrea28kII8eRxz302X+WegrKxgxi6c2CYCuO5RB21tLWi93aXwVkMwYfuXWfBnImoJXwoeXUKIe0ENvUUTWav+hBovh9S9j3kI/SXNoWYpeYdLAtINXpNtHMQK4nI7ehMaJbi/T/tZSbJ+x6zeoEviNiEEQ1M7zUo
+px9A6CiI0G/tj1YSjzt/UKCBHes629YQef9avRO6L2hpYPwFIYs5kH06T5IY1DSocp7pBmqpMJzIjqoGOqcBtIhzogh+OlV9xeGlI0TEW1UJt9LiLVl2HUQLuKeLRkNTR+G8IFPMp7QM1v9xdn0ILhAfILulKONROf50SHw
+Z/y1BQnErnesOZGvlzXvL8l7hWnWqUT7nZOd2L3kMKenBneoLctXZ85I2tYJQsbFmIB9bd+QQwQKbfeuBzmvzO4PvA5xvwJUSnYFYmogASSC4QY6qEw87xjbBmusFGQNawy9sStJv+SI="'
                 sh 'aws configure set default.region $AWS_DEFAULT_REGION'
                 sh 'aws s3 ls'
                 sh 'aws s3 cp target/*.jar s3://eksfrontendapp/'
