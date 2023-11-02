@@ -57,13 +57,17 @@ pipeline {
                 sh 'docker build -t new .'
             }
         }
-        stage('Push to ECR') {
+
+        stage('Push to S3') {
             steps {
-                sh 'aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com'
-                sh "docker tag frontendapp-${app}:latest  490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/eks-frontend-app-deployment:${app}-${BUILD_NUMBER}"
-                sh "docker push 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/eks-frontend-app-deployment:${app}-${BUILD_NUMBER}"
+                sh 'aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID'
+                sh 'aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY'
+                sh 'aws configure set default.region $AWS_DEFAULT_REGION'
+                sh 'aws s3 ls'
+                sh 'aws s3 cp target/*.jar s3://eksfrontendapp/'
+                }
             }
-        }
+        
         stage('Deploying ECR Image to EKS') {
             steps {
                 script {
