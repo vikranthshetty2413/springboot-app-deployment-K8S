@@ -64,7 +64,7 @@ pipeline {
                 sh "docker push 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/eks-frontend-app-deployment:${app}-${BUILD_NUMBER}"
             }
         }
-        stage('Deploying ECR Image to EKS') {
+        /*stage('Deploying ECR Image to EKS') {
             steps {
                 script {
                     sh '''
@@ -73,7 +73,7 @@ pipeline {
                     '''
                 }
             }
-        }
+        }*/
         
     }
 }
