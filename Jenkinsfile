@@ -1,5 +1,5 @@
 pipeline {
-    agent {label"slave2"}
+    agent {label "slave2"}
     environment {
         app = 'frontend'
         IMAGE_TAG = "frontend-${BUILD_NUMBER}"
